@@ -1,0 +1,23 @@
+PODS:
+  - JKSwiftTabBarController (0.0.1):
+    - SnapKit
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - JKSwiftTabBarController (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+
+EXTERNAL SOURCES:
+  JKSwiftTabBarController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JKSwiftTabBarController: 65ef746c3b6090a9113a4865f0c51980c90401b7
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 6ad9a655f0821de51a56adb0fa9b9c7fecc46fe9
+
+COCOAPODS: 1.9.3

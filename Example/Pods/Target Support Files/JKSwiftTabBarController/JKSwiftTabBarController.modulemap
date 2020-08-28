@@ -1,0 +1,6 @@
+framework module JKSwiftTabBarController {
+  umbrella header "JKSwiftTabBarController-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_JKSwiftTabBarController_Example {
+  umbrella header "Pods-JKSwiftTabBarController_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
