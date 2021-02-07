@@ -8,14 +8,34 @@
 
 import UIKit
 import JKSwiftTabBarController
-
+import JKSwiftExtension
 class JKMainViewController: JKTabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 使用本地的Tabbar
         localTabbar()
         
+        JKAsyncs.asyncDelay(3) {
+        } _: {[weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.viewControllers?.remove(at: 1)
+            weakSelf.tabBarView.barButtonItems.remove(at: 1)
+            JKAsyncs.asyncDelay(2) {
+            } _: {[weak self] in
+                guard let weakSelf = self else { return }
+                let vc2 = TradeViewController()
+                vc2.view.backgroundColor = UIColor.white
+                let titleColor = UIColor(hexString: "#444444")!
+                let selectedColor = UIColor(hexString: "#5F00B4")!
+                let tabBarItemTwo = JKTabBarItem(title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
+                weakSelf.viewControllers?.insert(JKNavigationController(rootViewController: vc2), at: 1)
+                weakSelf.tabBarView.barButtonItems.insert(tabBarItemTwo, at: 1)
+            }
+        }
+        
+        // 请忽略这个，这是我测试小火箭用的
         NotificationCenter.default.addObserver(self, selector: #selector(changeTabbarIcon), name: NSNotification.Name(rawValue: "changeTabbarIcon"), object: nil)
     }
     
@@ -39,39 +59,29 @@ class JKMainViewController: JKTabBarController {
 
 // MARK:- Tabbar的配置
 extension JKMainViewController {
-   
+    
     // MARK: 本地TabBar的配置
     /// 本地TabBar的配置
     func localTabbar() {
         let vc1 = HomeViewController()
         vc1.view.backgroundColor = UIColor.purple
         
-        let vc2 = UIViewController()
+        let vc2 = TradeViewController()
         vc2.view.backgroundColor = UIColor.white
         
-        let vc3 = ViewController()
+        let vc3 = ProfileViewController()
         vc3.view.backgroundColor = UIColor.yellow
         
-        let vc4 = UIViewController()
-        vc4.view.backgroundColor = UIColor.brown
+        viewControllers = [JKNavigationController(rootViewController: vc1), JKNavigationController(rootViewController: vc2), JKNavigationController(rootViewController: vc3)]
         
-        let vc5 = UIViewController()
-        vc5.view.backgroundColor = UIColor.green
-        
-        viewControllers = [JKNavigationController(rootViewController: vc1), JKNavigationController(rootViewController: vc2), JKNavigationController(rootViewController: vc3), JKNavigationController(rootViewController: vc4), JKNavigationController(rootViewController: vc5)]
-        
-        let titleColor = UIColor.blue
-        let selectedColor =  UIColor.red
+        let titleColor = UIColor(hexString: "#444444")!
+        let selectedColor = UIColor(hexString: "#5F00B4")!
         // 测试读取本地图片
-        let tabBarItemOne = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_home")
-        let tabBarItemTwo = JKTabBarItem(title: "找车", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_community")
-        let tabBarItemThree = JKTabBarItem(title: "社区", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_community")
-        let tabBarItemFour = JKTabBarItem(title: "用车", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_usecar")
-        let tabBarItemFive = JKTabBarItem(title: "我", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_me")
+        let tabBarItemOne = JKTabBarItem(localImageCount: 5, duration: 0.5, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_quotation")
+        let tabBarItemTwo = JKTabBarItem(title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
+        let tabBarItemThree = JKTabBarItem(title: "我的", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_profile")
         
-         tabBarView.barButtonItems = [
-            tabBarItemOne, tabBarItemTwo, tabBarItemThree, tabBarItemFour, tabBarItemFive
-         ]
+        tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree]
         tabBarView.tabBarItem = tabBarItemTwo
     }
     
@@ -82,19 +92,18 @@ extension JKMainViewController {
         let names: [String] = ["","","","","",""]
         let basePath = ""
         
-        let titleColor = UIColor.blue
-        let selectedColor =  UIColor.red
+        let titleColor = UIColor(hexString: "#444444")!
+        let selectedColor = UIColor(hexString: "#5F00B4")!
         
-        let tabBarItemOne = JKTabBarItem(fliePath: basePath, title: "首页", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_home")
-        let tabBarItemTwo = JKTabBarItem(fliePath: basePath.appending(names[1]), title: "社区", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_home")
-        let tabBarItemThree = JKTabBarItem(fliePath: basePath.appending(names[2]), title: "找车", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_usecar")
-        let tabBarItemFour = JKTabBarItem(fliePath: basePath.appending(names[3]), title: "找车", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_usecar")
-        let tabBarItemFive = JKTabBarItem(fliePath: basePath.appending(names[4]), title: "找车", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "new_tabbar_usecar")
+        let tabBarItemOne = JKTabBarItem(fliePath: basePath, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_quotation")
+        let tabBarItemTwo = JKTabBarItem(fliePath: basePath.appending(names[1]), title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
+        let tabBarItemThree = JKTabBarItem(fliePath: basePath.appending(names[2]), title: "我的", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_profile")
         
-        tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree, tabBarItemFour, tabBarItemFive]
+        tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree]
     }
 }
 
+// MARK:- 请忽略这个，这是我测试小火箭用的
 extension JKMainViewController {
     /// 改变icon
     /// - Parameter nofi: 通知参数

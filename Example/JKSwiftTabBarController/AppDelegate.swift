@@ -8,6 +8,8 @@
 
 import UIKit
 
+let JK = UIApplication.shared.delegate as! AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

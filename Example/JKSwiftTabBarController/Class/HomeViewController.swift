@@ -80,7 +80,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: tableView 的点击事件
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section)段,\(indexPath.row)行")
-        let profileViewController = ProfileViewController()
+        let profileViewController = ViewController()
         profileViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }

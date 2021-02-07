@@ -17,6 +17,7 @@
 		84978EFB25CFB459003AD86D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EF825CFB459003AD86D /* ViewController.swift */; };
 		84978EFC25CFB459003AD86D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EF925CFB459003AD86D /* HomeViewController.swift */; };
 		84978EFD25CFB459003AD86D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EFA25CFB459003AD86D /* ProfileViewController.swift */; };
+		84978F0125CFF1FB003AD86D /* TradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978F0025CFF1FB003AD86D /* TradeViewController.swift */; };
 		ADB2C3823DADE196F1D882C5 /* Pods_JKSwiftTabBarController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE47028B64E672943017558 /* Pods_JKSwiftTabBarController_Tests.framework */; };
 		E217D70DBCD3DA55ACB4839E /* Pods_JKSwiftTabBarController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F62F8200F4F7366DDB6CAB7 /* Pods_JKSwiftTabBarController_Example.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		84978EF825CFB459003AD86D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84978EF925CFB459003AD86D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84978EFA25CFB459003AD86D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		84978F0025CFF1FB003AD86D /* TradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewController.swift; sourceTree = "<group>"; };
 		8EE47028B64E672943017558 /* Pods_JKSwiftTabBarController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKSwiftTabBarController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A480E688D779198B9AEE5A1F /* Pods-JKSwiftTabBarController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Tests.debug.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Tests/Pods-JKSwiftTabBarController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD19C472543FFE82F1931BF5 /* Pods-JKSwiftTabBarController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Example.release.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Example/Pods-JKSwiftTabBarController_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				84978EF925CFB459003AD86D /* HomeViewController.swift */,
+				84978F0025CFF1FB003AD86D /* TradeViewController.swift */,
 				84978EFA25CFB459003AD86D /* ProfileViewController.swift */,
 				84978EF825CFB459003AD86D /* ViewController.swift */,
 			);
@@ -367,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84978F0125CFF1FB003AD86D /* TradeViewController.swift in Sources */,
 				84978EFD25CFB459003AD86D /* ProfileViewController.swift in Sources */,
 				84978EFC25CFB459003AD86D /* HomeViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

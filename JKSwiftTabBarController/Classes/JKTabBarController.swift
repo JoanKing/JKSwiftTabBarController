@@ -32,7 +32,6 @@ public extension JKTabBarItemRepeatTouch {
 open class JKTabBarController: UITabBarController {
     /// TabBarView 属性
     public private(set) var tabBarView: JKTabBarView = JKTabBarView()
-    
     // MARK: 设置图片
     /// 设置图片
     /// - Parameters:
