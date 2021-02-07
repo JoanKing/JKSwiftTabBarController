@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK:- 底部Item点击协议和实现
 /// 底部Item点击协议
 public protocol JKTabBarItemRepeatTouch {
     /// 底部Item重复点击
@@ -15,24 +16,24 @@ public protocol JKTabBarItemRepeatTouch {
     /// 其他Item点击
     func tabBarOtherItemClick()
     /// 当前item将要被选中
-    func tabBarSelfItemSelected()
+    func tabBarSelfItemSelected(selectedIndex: Int)
     /// 滚动到顶部
     func tabBarSelfItemSelectedScrollTop()
 }
 
-/// 扩展其实现
 public extension JKTabBarItemRepeatTouch {
     func tabBarItemRepeatTouch() { }
     func tabBarOtherItemClick() { }
-    func tabBarSelfItemSelected() { }
+    func tabBarSelfItemSelected(selectedIndex: Int) { }
     func tabBarSelfItemSelectedScrollTop() {}
 }
 
+// MARK:- UITabBarController 的配置
 open class JKTabBarController: UITabBarController {
-    // MARK: Property
+    /// TabBarView 属性
     public private(set) var tabBarView: JKTabBarView = JKTabBarView()
-
-    // MARK:- 设置图片
+    
+    // MARK: 设置图片
     /// 设置图片
     /// - Parameters:
     ///   - imageString: 图片的名称
@@ -42,7 +43,7 @@ open class JKTabBarController: UITabBarController {
         self.tabBarView.setUpbarItemImage(imageString, index: index, animated: animated)
     }
     
-    // MARK:- 设置标题
+    // MARK: 设置标题
     /// 设置标题
     /// - Parameters:
     ///   - titleString: 标题的名字
@@ -52,7 +53,7 @@ open class JKTabBarController: UITabBarController {
         self.tabBarView.setUpbarItemTitle(titleString, index: index, animated: animated)
     }
 
-    // MARK:- 设置提醒数，位置 访问调 JK.rootViewController?
+    // MARK: 设置提醒数，位置 访问调 JK.rootViewController?
     /// 设置提醒数，位置 访问调 JK.rootViewController?
     /// - Parameters:
     ///   - number: 数字
@@ -64,7 +65,7 @@ open class JKTabBarController: UITabBarController {
         self.tabBarView.showBadgeNumber(number, index: index)
     }
     
-    // MARK:- 设置小红点
+    // MARK: 设置小红点
     /// 设置小红点
     /// - Parameters:
     ///   - index: 位置
@@ -73,35 +74,12 @@ open class JKTabBarController: UITabBarController {
         self.tabBarView.setRedPoint(at: index, isShow: isShow)
     }
 
+    // MARK: 设置选中位置
     /// 设置选中位置
     open func setSelectedItem(at index: Int) {
         guard index < 5, index >= 0 else { return }
         changeIndex(index)
         selectedIndex = index
-    }
-    
-    /// 添加按钮关闭
-    open func closeAddItem() {
-        tabBarView.closeAnimation()
-    }
-    
-    /// 添加按钮旋转
-    open func showAnimation() {
-        tabBarView.showAnimation()
-    }
-
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return [.portrait]
-    }
-
-    override open var shouldAutorotate: Bool {
-        return false
-    }
-
-    // MARK: LeftCycle
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIViewController.attemptRotationToDeviceOrientation()
     }
 
     override open func viewDidLoad() {
@@ -111,7 +89,7 @@ open class JKTabBarController: UITabBarController {
         commonInit()
     }
 
-    // MARK: Private Method
+    // MARK: 布局视图
     private func commonInit() {
         tabBar.backgroundColor = UIColor.white
         tabBar.clipsToBounds = true
@@ -121,10 +99,10 @@ open class JKTabBarController: UITabBarController {
         }
     }
     
+    // MARK: 设置选中的位置
     /// 设置选中的位置
     /// - Parameter index: 位置
     private func changeIndex(_ index: Int) {
- 
         let preNavigationController = self.viewControllers![selectedIndex] as? UINavigationController
         let preFirstViewControler = preNavigationController?.viewControllers.first ?? viewControllers![selectedIndex]
 
@@ -139,7 +117,7 @@ open class JKTabBarController: UITabBarController {
             let navigationController = self.viewControllers![index] as? UINavigationController
             let firstViewControler = navigationController?.viewControllers.first ?? viewControllers![index]
             if let viewController = firstViewControler as? JKTabBarItemRepeatTouch {
-                viewController.tabBarSelfItemSelected()
+                viewController.tabBarSelfItemSelected(selectedIndex: index)
             }
         }
         
@@ -163,5 +141,26 @@ open class JKTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
 
+    /// 设置当前控制器支持的旋转方向
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        /*
+        protrait: 竖屏
+        landscape：横屏
+        - 在当前的控制器中定义完成之后当前的控制器与当前控制器的字控制器都会遵守这个方向
+        */
+        return [.portrait]
+    }
+    
+    /// 是否支持屏幕翻转
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+
+    // MARK: LeftCycle
+    override open func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 强制旋转成全屏
+        UIViewController.attemptRotationToDeviceOrientation()
+    }
 }
 

@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		845166E124F7CAE7004B030A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845166DE24F7CAE7004B030A /* HomeViewController.swift */; };
-		845166E224F7CAE7004B030A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845166DF24F7CAE7004B030A /* UIColor+Extension.swift */; };
-		845166E324F7CAE7004B030A /* XCRMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845166E024F7CAE7004B030A /* XCRMainViewController.swift */; };
+		84978EF225CFB440003AD86D /* JKNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EF025CFB43F003AD86D /* JKNavigationController.swift */; };
+		84978EF325CFB440003AD86D /* JKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EF125CFB43F003AD86D /* JKMainViewController.swift */; };
+		84978EFB25CFB459003AD86D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EF825CFB459003AD86D /* ViewController.swift */; };
+		84978EFC25CFB459003AD86D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EF925CFB459003AD86D /* HomeViewController.swift */; };
+		84978EFD25CFB459003AD86D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84978EFA25CFB459003AD86D /* ProfileViewController.swift */; };
 		ADB2C3823DADE196F1D882C5 /* Pods_JKSwiftTabBarController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE47028B64E672943017558 /* Pods_JKSwiftTabBarController_Tests.framework */; };
 		E217D70DBCD3DA55ACB4839E /* Pods_JKSwiftTabBarController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F62F8200F4F7366DDB6CAB7 /* Pods_JKSwiftTabBarController_Example.framework */; };
 /* End PBXBuildFile section */
@@ -34,7 +35,6 @@
 		607FACD01AFB9204008FA782 /* JKSwiftTabBarController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKSwiftTabBarController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -45,9 +45,11 @@
 		6A434094E800C7C07F8465C8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6F62F8200F4F7366DDB6CAB7 /* Pods_JKSwiftTabBarController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKSwiftTabBarController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AF7DA7C7993B56D59471394 /* Pods-JKSwiftTabBarController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Tests.release.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Tests/Pods-JKSwiftTabBarController_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		845166DE24F7CAE7004B030A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		845166DF24F7CAE7004B030A /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		845166E024F7CAE7004B030A /* XCRMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCRMainViewController.swift; sourceTree = "<group>"; };
+		84978EF025CFB43F003AD86D /* JKNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKNavigationController.swift; sourceTree = "<group>"; };
+		84978EF125CFB43F003AD86D /* JKMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKMainViewController.swift; sourceTree = "<group>"; };
+		84978EF825CFB459003AD86D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84978EF925CFB459003AD86D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		84978EFA25CFB459003AD86D /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8EE47028B64E672943017558 /* Pods_JKSwiftTabBarController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKSwiftTabBarController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A480E688D779198B9AEE5A1F /* Pods-JKSwiftTabBarController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Tests.debug.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Tests/Pods-JKSwiftTabBarController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD19C472543FFE82F1931BF5 /* Pods-JKSwiftTabBarController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Example.release.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Example/Pods-JKSwiftTabBarController_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,10 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				845166DE24F7CAE7004B030A /* HomeViewController.swift */,
-				845166DF24F7CAE7004B030A /* UIColor+Extension.swift */,
-				845166E024F7CAE7004B030A /* XCRMainViewController.swift */,
+				84978EEF25CFB42D003AD86D /* Class */,
+				84978EEE25CFB414003AD86D /* Main */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -155,6 +155,25 @@
 				F62DC4963323489EC48B4CEC /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		84978EEE25CFB414003AD86D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				84978EF125CFB43F003AD86D /* JKMainViewController.swift */,
+				84978EF025CFB43F003AD86D /* JKNavigationController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		84978EEF25CFB42D003AD86D /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				84978EF925CFB459003AD86D /* HomeViewController.swift */,
+				84978EFA25CFB459003AD86D /* ProfileViewController.swift */,
+				84978EF825CFB459003AD86D /* ViewController.swift */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 		E0D1798B56055DEF499E02FE /* Pods */ = {
@@ -221,10 +240,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = XXHJUP7YMQ;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = XXHJUP7YMQ;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -322,12 +343,16 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JKSwiftTabBarController_Example/Pods-JKSwiftTabBarController_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JKSwiftExtension/JKSwiftExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/JKSwiftTabBarController/JKSwiftTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKSwiftExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKSwiftTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,11 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				845166E324F7CAE7004B030A /* XCRMainViewController.swift in Sources */,
+				84978EFD25CFB459003AD86D /* ProfileViewController.swift in Sources */,
+				84978EFC25CFB459003AD86D /* HomeViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				845166E124F7CAE7004B030A /* HomeViewController.swift in Sources */,
-				845166E224F7CAE7004B030A /* UIColor+Extension.swift in Sources */,
+				84978EF225CFB440003AD86D /* JKNavigationController.swift in Sources */,
+				84978EFB25CFB459003AD86D /* ViewController.swift in Sources */,
+				84978EF325CFB440003AD86D /* JKMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +518,7 @@
 			baseConfigurationReference = 6370D0ECA1DB43486C52586D /* Pods-JKSwiftTabBarController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XXHJUP7YMQ;
 				INFOPLIST_FILE = JKSwiftTabBarController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -507,6 +534,7 @@
 			baseConfigurationReference = AD19C472543FFE82F1931BF5 /* Pods-JKSwiftTabBarController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XXHJUP7YMQ;
 				INFOPLIST_FILE = JKSwiftTabBarController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -521,6 +549,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A480E688D779198B9AEE5A1F /* Pods-JKSwiftTabBarController_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = XXHJUP7YMQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -543,6 +572,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AF7DA7C7993B56D59471394 /* Pods-JKSwiftTabBarController_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = XXHJUP7YMQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

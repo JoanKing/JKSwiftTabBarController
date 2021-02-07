@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'JKSwiftTabBarController_Example' do
   pod 'JKSwiftTabBarController', :path => '../'
-
+  pod 'JKSwiftExtension'
   target 'JKSwiftTabBarController_Tests' do
     inherit! :search_paths
 

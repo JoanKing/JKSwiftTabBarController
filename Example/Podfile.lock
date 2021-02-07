@@ -1,13 +1,20 @@
 PODS:
-  - JKSwiftTabBarController (0.0.1):
+  - JKSwiftExtension (1.1.7):
+    - Kingfisher
     - SnapKit
+  - JKSwiftTabBarController (0.0.2):
+    - SnapKit
+  - Kingfisher (4.10.1)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
+  - JKSwiftExtension
   - JKSwiftTabBarController (from `../`)
 
 SPEC REPOS:
   trunk:
+    - JKSwiftExtension
+    - Kingfisher
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -15,9 +22,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JKSwiftTabBarController: 65ef746c3b6090a9113a4865f0c51980c90401b7
+  JKSwiftExtension: 3af4cdbb84533601728f17812f10a56def7e9984
+  JKSwiftTabBarController: 29583070b25272bf7fba06849f8fb993bfee719e
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 6ad9a655f0821de51a56adb0fa9b9c7fecc46fe9
+PODFILE CHECKSUM: 3db1c825328d77ba994f3e8d8555112d7195b8e3
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
