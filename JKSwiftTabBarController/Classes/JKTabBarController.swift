@@ -48,11 +48,11 @@ open class JKTabBarController: UITabBarController {
         self.tabBarView.barButtonItems.remove(at: index)
         viewControllers?.remove(at: index)
         // 原来选中的index<移除的
-        guard self.tabBarView.selectedIndex >= index else {
+        guard self.tabBarView.oldSelectedIndex >= index else {
             return
         }
         // 大于移除的 原先的index-1
-        self.tabBarView.oldSelectedIndex -= self.tabBarView.oldSelectedIndex - 1
+        self.tabBarView.oldSelectedIndex = self.tabBarView.oldSelectedIndex - 1
     }
     
     // MARK: 插入某个TabbarItem
@@ -65,15 +65,12 @@ open class JKTabBarController: UITabBarController {
         guard self.tabBarView.barButtonItems.count < 5 && index <= self.tabBarView.barButtonItems.count else {
             return
         }
+        if self.tabBarView.oldSelectedIndex >= index {
+            // 大于插入的 原先选中的的index+1
+            self.tabBarView.oldSelectedIndex = self.tabBarView.oldSelectedIndex + 1
+        }
         viewControllers?.insert(vc, at: index)
         tabBarView.barButtonItems.insert(item, at: index)
-        
-        // 原来选中的index<移除的
-        guard self.tabBarView.selectedIndex >= index else {
-            return
-        }
-        // 大于移除的 原先的index+1
-        self.tabBarView.oldSelectedIndex += self.tabBarView.oldSelectedIndex - 1
     }
     
     // MARK: 设置图片
@@ -149,11 +146,11 @@ open class JKTabBarController: UITabBarController {
         let preNavigationController = self.viewControllers![selectedIndex] as? UINavigationController
         let preFirstViewControler = preNavigationController?.viewControllers.first ?? viewControllers![selectedIndex]
 
-        if let viewController = preFirstViewControler as? JKTabBarItemRepeatTouch, tabBarView.selectedIndex == index {
+        if let viewController = preFirstViewControler as? JKTabBarItemRepeatTouch, tabBarView.oldSelectedIndex == index {
             viewController.tabBarItemRepeatTouch()
         }
        
-        if tabBarView.selectedIndex != index {
+        if tabBarView.oldSelectedIndex != index {
             if let viewController = preFirstViewControler as? JKTabBarItemRepeatTouch {
                 viewController.tabBarOtherItemClick()
             }

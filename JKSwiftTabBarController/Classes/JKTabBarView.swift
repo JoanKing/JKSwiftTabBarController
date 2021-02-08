@@ -48,7 +48,7 @@ public class JKTabBarView: UIView {
                     }
                     make.top.bottom.equalTo(contentView)
                 })
-                if index == self.selectedIndex {
+                if index == self.oldSelectedIndex {
                     item.selected = true
                 }
                 lastItem = item
