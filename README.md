@@ -6,7 +6,15 @@
 [![Platform](https://img.shields.io/cocoapods/p/JKSwiftTabBarController.svg?style=flat)](https://cocoapods.org/pods/JKSwiftTabBarController)
 
 ## 使用说明
-   目前JKSwiftTabBarController最多支持 5 个 item, 支持本地的 静态图和动态图(帧图)，暂时不支持网络的更新，支持修改 TabbarView的背景色以及顶部横线的颜色
+   - 支持的功能如下：
+      - 目前JKSwiftTabBarController最多支持 5 个 item
+      - 支持本地的 静态图和动态图(帧图)，暂时不支持网络的更新
+      - 支持修改 TabbarView的背景色以及顶部横线的颜色
+      - 支持角标
+      - 支持红点
+      - 支持切换item
+      - 支持修改item底部的文字
+      - 支持修改item底部的图片
    - 静态图
       要求设置：选中和未选中图片，选中的图片是在未选中的后面 + `selected`，如：未选中是：`home`，则选中是：`home_selected`
    - 动态图(帧动画)
