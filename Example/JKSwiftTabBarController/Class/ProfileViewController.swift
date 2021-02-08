@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "我的"
+        self.navigationItem.title = "我的"
         self.view.backgroundColor = .randomColor
         setTableview()
     }

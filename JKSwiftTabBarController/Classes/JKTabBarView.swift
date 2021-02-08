@@ -65,18 +65,23 @@ public class JKTabBarView: UIView {
     /// 选中的 item (上次选中的item)
     @objc dynamic var selectedIndex: Int = 0 {
         didSet {
-            if oldValue >= barButtonItems.count && selectedIndex >= barButtonItems.count {
+            if oldSelectedIndex >= barButtonItems.count && selectedIndex >= barButtonItems.count {
                 return
             }
-            if selectedIndex == oldValue {
+            if selectedIndex == oldSelectedIndex {
                 return
             }
-            let oldItem = barButtonItems[oldValue]
+            let oldItem = barButtonItems[oldSelectedIndex]
             oldItem.selected = false
             let newItem = barButtonItems[selectedIndex]
             newItem.selected = true
+            oldSelectedIndex = selectedIndex
         }
     }
+    
+    // MARK: 上次选中的item
+    /// 选中的 item (上次选中的item)
+    @objc dynamic var oldSelectedIndex: Int = 0
     
     // MARK: - LifeCycle
     init() {

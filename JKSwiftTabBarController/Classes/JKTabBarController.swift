@@ -30,8 +30,52 @@ public extension JKTabBarItemRepeatTouch {
 
 // MARK:- UITabBarController 的配置
 open class JKTabBarController: UITabBarController {
+    
     /// TabBarView 属性
     public private(set) var tabBarView: JKTabBarView = JKTabBarView()
+
+    // MARK: 移除某个TabbarItem
+    /// 移除某个TabbarItem
+    /// - Parameters:
+    ///   - index: 第几个
+    ///   - item: JKTabBarItem
+    ///   - controller: 控制器
+    public func removeTabbarItem(index: Int) {
+        // 容错处理
+        guard index < self.tabBarView.barButtonItems.count && index < 5 else {
+            return
+        }
+        self.tabBarView.barButtonItems.remove(at: index)
+        viewControllers?.remove(at: index)
+        // 原来选中的index<移除的
+        guard self.tabBarView.selectedIndex >= index else {
+            return
+        }
+        // 大于移除的 原先的index-1
+        self.tabBarView.oldSelectedIndex -= self.tabBarView.oldSelectedIndex - 1
+    }
+    
+    // MARK: 插入某个TabbarItem
+    /// 插入某个TabbarItem
+    /// - Parameters:
+    ///   - index: 插入item的位置
+    ///   - item: JKTabBarItem
+    ///   - vc: 插入对应的ViewController
+    public func insertTabbarItem(index: Int, item: JKTabBarItem, vc: UIViewController) {
+        guard self.tabBarView.barButtonItems.count < 5 && index <= self.tabBarView.barButtonItems.count else {
+            return
+        }
+        viewControllers?.insert(vc, at: index)
+        tabBarView.barButtonItems.insert(item, at: index)
+        
+        // 原来选中的index<移除的
+        guard self.tabBarView.selectedIndex >= index else {
+            return
+        }
+        // 大于移除的 原先的index+1
+        self.tabBarView.oldSelectedIndex += self.tabBarView.oldSelectedIndex - 1
+    }
+    
     // MARK: 设置图片
     /// 设置图片
     /// - Parameters:

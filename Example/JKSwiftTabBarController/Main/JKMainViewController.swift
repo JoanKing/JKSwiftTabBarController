@@ -17,12 +17,11 @@ class JKMainViewController: JKTabBarController {
         // 使用本地的Tabbar
         localTabbar()
         
-        JKAsyncs.asyncDelay(3) {
+        JKAsyncs.asyncDelay(5) {
         } _: {[weak self] in
             guard let weakSelf = self else { return }
-            weakSelf.viewControllers?.remove(at: 1)
-            weakSelf.tabBarView.barButtonItems.remove(at: 1)
-            JKAsyncs.asyncDelay(2) {
+            weakSelf.removeTabbarItem(index: 1)
+            JKAsyncs.asyncDelay(5) {
             } _: {[weak self] in
                 guard let weakSelf = self else { return }
                 let vc2 = TradeViewController()
@@ -30,8 +29,7 @@ class JKMainViewController: JKTabBarController {
                 let titleColor = UIColor(hexString: "#444444")!
                 let selectedColor = UIColor(hexString: "#5F00B4")!
                 let tabBarItemTwo = JKTabBarItem(title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
-                weakSelf.viewControllers?.insert(JKNavigationController(rootViewController: vc2), at: 1)
-                weakSelf.tabBarView.barButtonItems.insert(tabBarItemTwo, at: 1)
+                weakSelf.insertTabbarItem(index: 1, item: tabBarItemTwo, vc: JKNavigationController(rootViewController: vc2))
             }
         }
         
@@ -48,7 +46,6 @@ class JKMainViewController: JKTabBarController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // 移除通知
