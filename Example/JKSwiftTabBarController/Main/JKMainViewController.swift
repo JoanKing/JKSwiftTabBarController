@@ -9,6 +9,7 @@
 import UIKit
 import JKSwiftTabBarController
 import JKSwiftExtension
+import ZipArchive
 class JKMainViewController: JKTabBarController {
     
     override func viewDidLoad() {
@@ -16,8 +17,16 @@ class JKMainViewController: JKTabBarController {
         
         // 使用本地的Tabbar
         localTabbar()
+        // 网络的测试
+        // networkTabbar()
         
-        JKAsyncs.asyncDelay(5) {
+        // 请忽略这个，这是我测试小火箭用的
+        NotificationCenter.default.addObserver(self, selector: #selector(changeTabbarIcon), name: NSNotification.Name(rawValue: "changeTabbarIcon"), object: nil)
+    }
+    
+    // MARK: 测试Item的添加和移除
+    func testItemRemoveOrAdd() {
+        JKAsyncs.asyncDelay(500) {
         } _: {[weak self] in
             guard let weakSelf = self else { return }
             weakSelf.removeTabbarItem(index: 1)
@@ -32,9 +41,6 @@ class JKMainViewController: JKTabBarController {
                 weakSelf.insertTabbarItem(index: 1, item: tabBarItemTwo, vc: JKNavigationController(rootViewController: vc2))
             }
         }
-        
-        // 请忽略这个，这是我测试小火箭用的
-        NotificationCenter.default.addObserver(self, selector: #selector(changeTabbarIcon), name: NSNotification.Name(rawValue: "changeTabbarIcon"), object: nil)
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -85,18 +91,38 @@ extension JKMainViewController {
     // MARK: 网络的TabBar的配置
     /// 网络的TabBar的配置
     func networkTabbar() {
-        // 测网络下载
-        let names: [String] = ["","","","","",""]
-        let basePath = ""
         
-        let titleColor = UIColor(hexString: "#444444")!
-        let selectedColor = UIColor(hexString: "#5F00B4")!
+        // 解压后的文件夹路径
+        let basePath = FileManager.jk.DocumnetsDirectory() + "/JKTabbarInfo"
+        let tabBarConfigPath = basePath + "/TabBarConfig.plist"
+        guard let dictionary = NSDictionary(contentsOfFile: tabBarConfigPath),
+              let titleColorString = dictionary.object(forKey: "titleColor") as? String,
+              let selectedColorString = dictionary.object(forKey: "selectedColor") as? String,
+              let names = dictionary.object(forKey: "titles") as? Array<String>,
+              names.count > 0,
+              let tabbars = dictionary.object(forKey: "Tabbars") as? Array<Dictionary<String,String>> else {
+            // 本地沙盒没有就去加载本地的
+            localTabbar()
+            return
+        }
+        // names: tabbar的titles数组
+        // 未选中的颜色
+        let titleColor = UIColor(hexString: titleColorString)!
+        // 选中的颜色
+        let selectedColor = UIColor(hexString: selectedColorString)!
         
-        let tabBarItemOne = JKTabBarItem(fliePath: basePath, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_quotation")
-        let tabBarItemTwo = JKTabBarItem(fliePath: basePath.appending(names[1]), title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
-        let tabBarItemThree = JKTabBarItem(fliePath: basePath.appending(names[2]), title: "我的", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_profile")
-        
-        tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree]
+        var vcs: [UIViewController] = []
+        var barButtonItems: [JKTabBarItem] = []
+        for dic in tabbars {
+            if let name = dic["title"], let defaultImageName = dic["defaultImageName"], let vcName = dic["ClassName"], let vc = vcName.jk.toViewController()  {
+                let tabBarItem = JKTabBarItem(fliePath: "\(basePath)/\(name)", title: name, titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: defaultImageName)
+                barButtonItems.append(tabBarItem)
+                vcs.append(JKNavigationController(rootViewController: vc))
+            }
+        }
+        viewControllers = vcs
+        tabBarView.barButtonItems = barButtonItems
+        tabBarView.tabBarItem = barButtonItems[0]
     }
 }
 

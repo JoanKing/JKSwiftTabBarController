@@ -1,32 +1,39 @@
 PODS:
-  - JKSwiftExtension (1.1.7):
+  - Alamofire (4.9.1)
+  - JKSwiftExtension (1.2.2):
     - Kingfisher
-    - SnapKit
-  - JKSwiftTabBarController (0.0.2):
+  - JKSwiftTabBarController (0.0.6):
     - SnapKit
   - Kingfisher (4.10.1)
   - SnapKit (4.2.0)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
+  - Alamofire
   - JKSwiftExtension
   - JKSwiftTabBarController (from `../`)
+  - ZipArchive
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - JKSwiftExtension
     - Kingfisher
     - SnapKit
+    - ZipArchive
 
 EXTERNAL SOURCES:
   JKSwiftTabBarController:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JKSwiftExtension: 3af4cdbb84533601728f17812f10a56def7e9984
-  JKSwiftTabBarController: 29583070b25272bf7fba06849f8fb993bfee719e
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  JKSwiftExtension: b15a5726d4c926fca007a0cb7337d38565666365
+  JKSwiftTabBarController: c29a0fad186b21edb49f371ba495769010e92ee7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 3db1c825328d77ba994f3e8d8555112d7195b8e3
+PODFILE CHECKSUM: a5b1593c44008c0031f0e2ffc738861c2121ae0d
 
 COCOAPODS: 1.10.0

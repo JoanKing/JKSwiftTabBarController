@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKSwiftTabBarController'
-  s.version          = '0.0.6'
+  s.version          = '0.0.7'
   s.summary          = 'TabBarController的基本配置'
   s.description      = '这是TabBarController的一个详细的使用文档，支持下载后的更新，也支持文档的更新'
   s.homepage         = 'https://github.com/JoanKing/JKSwiftTabBarController'

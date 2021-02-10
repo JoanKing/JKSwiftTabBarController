@@ -32,27 +32,29 @@ class TradeViewController: UIViewController, JKTabBarItemRepeatTouch {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
+        
         let badge = UIButton(type: .system)
         badge.setTitle("更改背景色", for: .normal)
-        badge.addTarget(self, action: #selector(self.badge(btn:)), for: .touchUpInside)
+        badge.addTarget(self, action: #selector(badgeClick), for: .touchUpInside)
         badge.frame = CGRect(x: 100, y: 100, width: 100, height: 60)
         view.addSubview(badge)
         
         let number = UIButton(type: .system)
         number.setTitle("数字", for: .normal)
-        number.addTarget(self, action: #selector(self.number(btn:)), for: .touchUpInside)
+        number.addTarget(self, action: #selector(numberClick), for: .touchUpInside)
         number.frame = CGRect(x: 100, y: 200, width: 60, height: 60)
         view.addSubview(number)
         
         let changeIndex = UIButton(type: .system)
         changeIndex.setTitle("变选中", for: .normal)
-        changeIndex.addTarget(self, action: #selector(self.changeIndex(btn:)), for: .touchUpInside)
+        changeIndex.addTarget(self, action: #selector(changeIndexClick), for: .touchUpInside)
         changeIndex.frame = CGRect(x: 100, y: 300, width: 60, height: 60)
         view.addSubview(changeIndex)
         
         let changeIcon = UIButton(type: .system)
         changeIcon.setTitle("变图标", for: .normal)
-        changeIcon.addTarget(self, action: #selector(self.changeIcon(btn:)), for: .touchUpInside)
+        changeIcon.addTarget(self, action: #selector(changeIconClick), for: .touchUpInside)
         changeIcon.frame = CGRect(x: 100, y: 400, width: 60, height: 60)
         view.addSubview(changeIcon)
         
@@ -78,7 +80,7 @@ class TradeViewController: UIViewController, JKTabBarItemRepeatTouch {
         
     }
     
-    @objc func badge(btn: UIButton) {
+    @objc func badgeClick(btn: UIButton) {
         btn.isSelected = !btn.isSelected
         // 更换背景颜色
         if btn.isSelected {
@@ -90,23 +92,23 @@ class TradeViewController: UIViewController, JKTabBarItemRepeatTouch {
         }
     }
     
-    @objc func number(btn: UIButton) {
+    @objc func numberClick(btn: UIButton) {
         btn.isSelected = !btn.isSelected
         JK.mainViewController.showBadgeNumber(btn.isSelected ? 2000 : 0, index: 0)
         JK.mainViewController.showBadgeNumber(btn.isSelected ? 2000 : 0, index: 2)
     }
     
-    @objc func changeIndex(btn: UIButton) {
+    @objc func changeIndexClick(btn: UIButton) {
         JK.mainViewController.setSelectedItem(at: 0)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             JK.mainViewController.setSelectedItem(at: 2)
         })
     }
     
-    @objc func changeIcon(btn: UIButton) {
+    @objc func changeIconClick(btn: UIButton) {
         btn.isSelected = !btn.isSelected
-        let str = btn.isSelected ? "tabbar_reload" : "new_tabbar_home"
-        JK.mainViewController.setUpItemImage(str, index: 0)
+        let imageName = btn.isSelected ? "tabbar_reload" : "new_tabbar_home"
+        JK.mainViewController.setUpItemImage(imageName, index: 0)
     }
     
     @objc func changeTitleClick(btn: UIButton) {

@@ -1,11 +1,15 @@
 use_frameworks!
 
 target 'JKSwiftTabBarController_Example' do
+  # TabBarController
   pod 'JKSwiftTabBarController', :path => '../'
+  # 基本的扩展库
   pod 'JKSwiftExtension'
+  # 网络请求
+  pod 'Alamofire'
+  # 解压Zip包
+  pod 'ZipArchive'
   target 'JKSwiftTabBarController_Tests' do
     inherit! :search_paths
-
-    
   end
 end

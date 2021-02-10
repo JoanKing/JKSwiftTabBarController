@@ -17,9 +17,21 @@ public enum JKTabbarType {
     /// 多张图片
     case gifImage
 }
+
+// MARK: item
+public enum JKTabbarItemType {
+    /// 单张图片
+    case local
+    /// 多张图片
+    case network
+}
  
 public class JKTabBarItem: UIView {
     // MARK:- Property
+    /// 沙盒的资源路径
+    var sourceFliePath: String = ""
+    /// item的类型
+    var itemType: JKTabbarItemType = .local
     /// 角标数量
     public var badgeNumber: Int? {
         didSet {
@@ -79,6 +91,7 @@ public class JKTabBarItem: UIView {
     
     // MARK: 本地的Tbabar配置
     private init(type: JKTabbarType, duration: TimeInterval, localImageCount: Int, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
+        self.itemType = .local
         self.tabbarType = type
         self.imageName = defaultImageName
         self.title = title
@@ -112,6 +125,8 @@ public class JKTabBarItem: UIView {
     
     // MARK: 网络下载的Tbabar配置
     private init(type: JKTabbarType, fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
+        self.sourceFliePath = fliePath
+        self.itemType = .network
         self.imageName = defaultImageName
         self.title = title
         self.titleNormalColor = titleColor
@@ -130,27 +145,27 @@ public class JKTabBarItem: UIView {
         savebutton.setTitleColor(titleColor, for: .normal)
         savebutton.setTitleColor(selectedTitleColor, for: .selected)
         
+        let normalImageFilePath = "\(fliePath)/\(defaultImageName).png"
+        let selectedImageFilePath = "\(fliePath)/\(defaultImageName)_selected.png"
+        
         if type == .gifImage, netWorkImageCount >= 2 {
             imageCount = netWorkImageCount
             animatedImages.reserveCapacity(netWorkImageCount)
             for i in 1...netWorkImageCount {
-                let imageFilePath = "\(fliePath)_\(i).png"
+                let imageFilePath = "\(fliePath)/\(defaultImageName)_selected\(i).png"
                 if let image = UIImage(contentsOfFile:imageFilePath) {
                     animatedImages.append(image)
                 }
             }
-            
-            let normalImageFilePath = "\(fliePath)_1.png"
-            let selectedImageFilePath = "\(fliePath)_\(netWorkImageCount).png"
-            
+        
             savebutton.setImage(UIImage(contentsOfFile:normalImageFilePath), for: .normal)
             savebutton.setImage(UIImage(contentsOfFile:selectedImageFilePath), for: .selected)
             
             animatedImageView.animationDuration = duration
         } else {
             imageCount = netWorkImageCount
-            savebutton.setImage(UIImage(named: imageName), for: .normal)
-            savebutton.setImage(UIImage(named: "\(imageName)_selected"), for: .selected)
+            savebutton.setImage(UIImage(contentsOfFile:normalImageFilePath), for: .normal)
+            savebutton.setImage(UIImage(contentsOfFile:selectedImageFilePath), for: .selected)
         }
         resetSelectedStatus()
     }
@@ -239,7 +254,7 @@ extension JKTabBarItem {
     ///   - selectedTitleColor: 选中的颜色
     ///   - defaultImageName: 默认的图片
     public convenience init(fliePath: String, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
-        self.init(type: .gifImage, fliePath: fliePath, netWorkImageCount: 0, duration: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName)
+        self.init(type: .singleImage, fliePath: fliePath, netWorkImageCount: 0, duration: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName)
     }
 }
 
@@ -328,8 +343,15 @@ extension JKTabBarItem {
         savebutton.setTitleColor(self.titleNormalColor, for: .normal)
         savebutton.setTitleColor(self.titleSelectedColor, for: .selected)
         // 未选中图片没有黑夜效果
-        savebutton.setImage(UIImage(named: imageName), for: .normal)
-        savebutton.setImage(UIImage(named: "\(imageName)_selected"), for: .selected)
+        if itemType == .local {
+            savebutton.setImage(UIImage(named: imageName), for: .normal)
+            savebutton.setImage(UIImage(named: "\(imageName)_selected"), for: .selected)
+        } else {
+            let normalImageFilePath = "\(self.sourceFliePath)/\(imageName).png"
+            let selectedImageFilePath = "\(self.sourceFliePath)/\(imageName)_selected.png"
+            savebutton.setImage(UIImage(contentsOfFile:normalImageFilePath), for: .normal)
+            savebutton.setImage(UIImage(contentsOfFile:selectedImageFilePath), for: .selected)
+        }
     }
     
     private func resetSelectedStatus() {

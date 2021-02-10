@@ -16,6 +16,8 @@ class ProfileViewController: UIViewController {
         self.navigationItem.title = "我的"
         self.view.backgroundColor = .randomColor
         setTableview()
+        
+        print("\(FileManager.jk.DocumnetsDirectory())")
     }
     
     // MARK: tableView的设置

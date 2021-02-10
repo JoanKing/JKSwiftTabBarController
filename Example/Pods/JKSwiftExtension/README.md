@@ -36,7 +36,36 @@
     我的联系方式：微信：18500652880，您加我后，我把您拉进 JKSwiftExtension 的使用和维护群
     
 ## 版本说明
-    
+   - 1.2.1、版本
+     去除 SmallTools 中的 JKVerticalCarousel、MaskingManager、JKLoadingView 删除，也去除依赖SnapKit
+   - 1.1.9、版本
+       UIDevice+Extension.swift 扩展新增：有关设备运营商的信息
+       - sim卡信息
+       - 数据业务对应的通信技术
+       - 设备网络制式
+       - 运营商名字
+       - 移动国家码(MCC)
+       - 移动网络码(MNC)
+       - ISO国家代码
+       - 是否允许VoIP
+   - 1.1.8、版本
+       调整状态栏的高度
+       
+         public var kStatusBarFrameH: CGFloat {
+            guard isIPhoneX else {
+              return 20
+            }
+            return UIApplication.shared.statusBarFrame.height > 0 ? UIApplication.shared.statusBarFrame.height : 44
+         }
+   - 1.1.7、版本
+   
+         gif图片的：本地、asset、网络 的分解
+
+   - 1.1.6、版本
+   
+         UIView+Extension：新增背景颜色渐变和colors变化渐变动画
+         UIButton+Extension：新增点击区域的扩展设置
+         CAGradientLayer+Extension：新增渐变扩展
    - 1.1.5、版本
     
          UIApplication+Extension 新增打开系统应用和第三方APP的方法，如打开微信
