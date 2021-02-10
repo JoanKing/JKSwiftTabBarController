@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/JKSwiftTabBarController.svg?style=flat)](https://cocoapods.org/pods/JKSwiftTabBarController)
 
 ## 使用说明
-   - 支持的功能如下：
+   - 支持本地和服务器，功能如下：
       - 目前JKSwiftTabBarController最多支持 5 个 item
       - 支持本地的 静态图和动态图(帧图)，暂时不支持网络的更新
       - 支持修改 TabbarView的背景色以及顶部横线的颜色
@@ -67,7 +67,38 @@
            tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree]
            tabBarView.tabBarItem = tabBarItemTwo
    
-   - 网络(待更新)......
+   - 网络：在demo用我有写使用用例
+       
+          // 基本路径
+         let basePath = FileManager.jk.DocumnetsDirectory() + "/JKTabbarInfo"
+         let tabBarConfigPath = basePath + "/TabBarConfig.plist"
+         guard let dictionary = NSDictionary(contentsOfFile: tabBarConfigPath),
+             let titleColorString = dictionary.object(forKey: "titleColor") as? String,
+             let selectedColorString = dictionary.object(forKey: "selectedColor") as? String,
+             names.count > 0,
+             let tabbars = dictionary.object(forKey: "Tabbars") as? Array<Dictionary<String,String>> else {
+                // 本地沙盒没有就去加载本地的
+                localTabbar()
+                return
+         }
+         // names: tabbar的titles数组
+         // 未选中的颜色
+         let titleColor = UIColor(hexString: titleColorString)!
+         // 选中的颜色
+         let selectedColor = UIColor(hexString: selectedColorString)!
+        
+         var vcs: [UIViewController] = []
+         var barButtonItems: [JKTabBarItem] = []
+         for dic in tabbars {
+             if let name = dic["title"], let defaultImageName = dic["defaultImageName"], let vcName = dic["ClassName"], let vc = vcName.jk.toViewController()  {
+                 let tabBarItem = JKTabBarItem(fliePath: "\(basePath)/\(name)", title: name, titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: defaultImageName)
+                 barButtonItems.append(tabBarItem)
+                 vcs.append(JKNavigationController(rootViewController: vc))
+             }
+         }
+         viewControllers = vcs
+         tabBarView.barButtonItems = barButtonItems
+         tabBarView.tabBarItem = barButtonItems[0]
 
 ## Requirements
 
