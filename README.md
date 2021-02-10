@@ -69,7 +69,7 @@
    
    - 网络：在demo用我有写使用用例
        
-          // 解压后的文件夹路径
+         // 解压后的文件夹路径
          let basePath = FileManager.jk.DocumnetsDirectory() + "/JKTabbarInfo"
          let tabBarConfigPath = basePath + "/TabBarConfig.plist"
          guard let dictionary = NSDictionary(contentsOfFile: tabBarConfigPath),
