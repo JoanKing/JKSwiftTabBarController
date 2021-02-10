@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>type</key>
+	<string>1</string>
+	<key>count</key>
+	<string>1</string>
+	<key>titleColor</key>
+	<string>#444444</string>
+	<key>selectedColor</key>
+	<string>#5F00B4</string>
+	<key>tabBarViewBackgroundColor</key>
+	<string>#FFFFFF</string>
+	<key>tabBarViewTopLineBackgroundColor</key>
+	<string>#0000FF</string>
+	<key>Tabbars</key>
+	<array>
+		<dict>
+			<key>ClassName</key>
+			<string>HomeViewController</string>
+			<key>defaultImageName</key>
+			<string>tabbar_quotation</string>
+			<key>title</key>
+			<string>行情</string>
+		</dict>
+		<dict>
+			<key>ClassName</key>
+			<string>TradeViewController</string>
+			<key>defaultImageName</key>
+			<string>tabbar_trade</string>
+			<key>title</key>
+			<string>交易</string>
+		</dict>
+		<dict>
+			<key>ClassName</key>
+			<string>ProfileViewController</string>
+			<key>defaultImageName</key>
+			<string>tabbar_profile</string>
+			<key>title</key>
+			<string>我的</string>
+		</dict>
+	</array>
+</dict>
+</plist>
