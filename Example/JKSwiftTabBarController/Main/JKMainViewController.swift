@@ -22,6 +22,7 @@ class JKMainViewController: JKTabBarController {
         
         // 请忽略这个，这是我测试小火箭用的
         NotificationCenter.default.addObserver(self, selector: #selector(changeTabbarIcon), name: NSNotification.Name(rawValue: "changeTabbarIcon"), object: nil)
+
     }
     
     // MARK: 测试Item的添加和移除
@@ -80,8 +81,10 @@ extension JKMainViewController {
         let titleColor = UIColor(hexString: "#444444")!
         let selectedColor = UIColor(hexString: "#5F00B4")!
         // 测试读取本地图片
-        let tabBarItemOne = JKTabBarItem(localImageCount: 5, duration: 0.5, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_quotation")
-        let tabBarItemTwo = JKTabBarItem(title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
+        let tabBarItemOne = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "fb_quotes")
+        // fb_trade
+        // let tabBarItemTwo = JKTabBarItem(title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
+        let tabBarItemTwo = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "fb_trade")
         let tabBarItemThree = JKTabBarItem(title: "我的", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_profile")
         
         tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree]

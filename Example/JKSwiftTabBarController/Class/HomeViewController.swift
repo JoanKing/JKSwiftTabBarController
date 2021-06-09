@@ -24,6 +24,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "首页"
         setTableview()
+        if let currentVC = self.view.jk.currentVC {
+            let className = currentVC.className
+            print("🚀🚀🚀🚀🚀🚀🚀🚀当前的控制器：\(className)")
+        }
     }
     
     // MARK: tableView的设置
