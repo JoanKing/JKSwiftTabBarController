@@ -30,6 +30,11 @@ class TestViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        JK.mainViewController.setSelectedItem(at: 1)
+    }
+    
 
     /*
     // MARK: - Navigation

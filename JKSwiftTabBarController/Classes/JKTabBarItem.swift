@@ -38,6 +38,14 @@ public class JKTabBarItem: UIView {
             showBadgeNumber(badgeNumber)
         }
     }
+    
+    /// 角标文字
+    public var badgeText: String? {
+        didSet {
+            showBadgeText(badgeText)
+        }
+    }
+    
     /// 是否显示小红点
     public var showRedPointView: Bool = false {
         didSet {
@@ -60,7 +68,7 @@ public class JKTabBarItem: UIView {
         }
     }
     /// 角标
-    private var badgeLabel: UILabel!
+    private var badgeLabel: ItemPaddingLabel!
     /// 小红点
     private var redPointView: UIView!
     /// 每个item的button
@@ -84,13 +92,15 @@ public class JKTabBarItem: UIView {
     private var titleNormalColor: UIColor
     /// 选中的的颜色
     private var titleSelectedColor: UIColor
+    /// 图片的大小
+    private var imageItemSize: CGSize
     /// Tbabar的类型：默认单张图片
     private var tabbarType: JKTabbarType = .singleImage
     /// gif 类型动画的时长
     private var animationDuration: TimeInterval = 0
     
     // MARK: 本地的Tbabar配置
-    private init(type: JKTabbarType, duration: TimeInterval, localImageCount: Int, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
+    private init(type: JKTabbarType, duration: TimeInterval, localImageCount: Int, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
         self.itemType = .local
         self.tabbarType = type
         self.imageName = defaultImageName
@@ -98,6 +108,7 @@ public class JKTabBarItem: UIView {
         self.titleNormalColor = titleColor
         self.titleSelectedColor = selectedTitleColor
         self.animationDuration = duration
+        self.imageItemSize = imageItemSize
         super.init(frame: CGRect.zero)
         initUI()
         commonInit()
@@ -124,7 +135,7 @@ public class JKTabBarItem: UIView {
     }
     
     // MARK: 网络下载的Tbabar配置
-    private init(type: JKTabbarType, fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
+    private init(type: JKTabbarType, fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
         self.sourceFliePath = fliePath
         self.itemType = .network
         self.imageName = defaultImageName
@@ -132,6 +143,7 @@ public class JKTabBarItem: UIView {
         self.titleNormalColor = titleColor
         self.titleSelectedColor = selectedTitleColor
         self.animationDuration = duration
+        self.imageItemSize = imageItemSize
         super.init(frame: CGRect.zero)
         initUI()
         bottomTitle.text = title
@@ -212,8 +224,8 @@ extension JKTabBarItem {
     ///   - titleColor: 未选中的字体颜色
     ///   - selectedTitleColor: 选中的字体颜色
     ///   - defaultImageName: 默认的额图片
-    public convenience init(localImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
-        self.init(type: .gifImage, duration: duration, localImageCount: localImageCount, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName : defaultImageName)
+    public convenience init(localImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+        self.init(type: .gifImage, duration: duration, localImageCount: localImageCount, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName : defaultImageName, imageItemSize: imageItemSize)
     }
     
     // MARK: 本地普通的Tabbar
@@ -223,8 +235,8 @@ extension JKTabBarItem {
     ///   - titleColor: 未选中的字体颜色
     ///   - selectedTitleColor: 选中的字体颜色
     ///   - defaultImageName: 默认的额图片
-    public convenience init(title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
-        self.init(type: .singleImage, duration: 0, localImageCount: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName)
+    public convenience init(title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+        self.init(type: .singleImage, duration: 0, localImageCount: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName, imageItemSize: imageItemSize)
     }
 }
 
@@ -241,8 +253,8 @@ extension JKTabBarItem {
     ///   - titleColor: 普通的颜色
     ///   - selectedTitleColor: 选中的颜色
     ///   - defaultImageName: 默认的图片
-    public convenience init(fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
-        self.init(type: .gifImage, fliePath: fliePath, netWorkImageCount: netWorkImageCount, duration: duration, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName)
+    public convenience init(fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+        self.init(type: .gifImage, fliePath: fliePath, netWorkImageCount: netWorkImageCount, duration: duration, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName, imageItemSize: imageItemSize)
     }
     
     // MARK: 网络普通的Tabbar
@@ -253,8 +265,8 @@ extension JKTabBarItem {
     ///   - titleColor: 普通的颜色
     ///   - selectedTitleColor: 选中的颜色
     ///   - defaultImageName: 默认的图片
-    public convenience init(fliePath: String, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String) {
-        self.init(type: .singleImage, fliePath: fliePath, netWorkImageCount: 0, duration: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName)
+    public convenience init(fliePath: String, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+        self.init(type: .singleImage, fliePath: fliePath, netWorkImageCount: 0, duration: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName, imageItemSize: imageItemSize)
     }
 }
 
@@ -263,9 +275,13 @@ extension JKTabBarItem {
     // MARK: 创建对应的控件
     /// 创建对应的控件
     private func initUI() {
-        badgeLabel = UILabel(frame: CGRect.zero)
+        badgeLabel = ItemPaddingLabel(frame: CGRect.zero)
         badgeLabel.font = UIFont.systemFont(ofSize: 10)
-        // badgeLabel.textInsets = UIEdgeInsets(top: 1, left: 3, bottom: 1, right: 3)
+        badgeLabel.paddingTop = 2
+        badgeLabel.paddingLeft = 5
+        badgeLabel.paddingBottom = 2
+        badgeLabel.paddingRight = 5
+            // UIEdgeInsets(top: 2, left: 3, bottom: 1, right: 3)
         badgeLabel.textAlignment = .center
         badgeLabel.isHidden = true
         badgeLabel.isUserInteractionEnabled = false
@@ -317,7 +333,7 @@ extension JKTabBarItem {
         iconImageView.snp.makeConstraints { (make) in
             make.top.equalTo(self).offset(6.5)
             make.centerX.equalTo(self)
-            make.size.equalTo(CGSize(width: 25, height: 25))
+            make.size.equalTo(imageItemSize)
         }
         animatedImageView.snp.makeConstraints { (make) in
             make.edges.equalTo(iconImageView)
@@ -335,6 +351,7 @@ extension JKTabBarItem {
         badgeLabel.textColor = UIColor.white
         badgeLabel.backgroundColor =  UIColor.red
         badgeLabel.layer.borderColor = UIColor.white.cgColor
+        badgeLabel.layer.borderWidth = 1
         setButtonDefaultStyle()
         resetSelectedStatus()
     }
@@ -402,6 +419,18 @@ extension JKTabBarItem {
             badgeLabel.isHidden = true
         }
     }
+    
+    // MARK: 设置角标文字
+    /// 设置角标文字
+    /// - Parameter number: 角标的文字
+    func showBadgeText(_ number: String?) {
+        if let number = number {
+            badgeLabel.isHidden = number.count == 0
+            badgeLabel.text = number
+        } else {
+            badgeLabel.isHidden = true
+        }
+    }
 }
 
 // MARK:- 自定义 tabbar
@@ -429,5 +458,45 @@ public class JKTabBar: UITabBar {
             }
         }
         return size
+    }
+}
+
+// MARK:- PaddingLabel
+class ItemPaddingLabel : UILabel {
+    
+    private var padding = UIEdgeInsets.zero
+    
+    var paddingLeft: CGFloat {
+        get { return padding.left }
+        set { padding.left = newValue }
+    }
+    
+    var paddingRight: CGFloat {
+        get { return padding.right }
+        set { padding.right = newValue }
+    }
+    
+    var paddingTop: CGFloat {
+        get { return padding.top }
+        set { padding.top = newValue }
+    }
+
+    var paddingBottom: CGFloat {
+        get { return padding.bottom }
+        set { padding.bottom = newValue }
+    }
+    
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: padding))
+    }
+    
+    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let insets = self.padding
+        var rect = super.textRect(forBounds: bounds.inset(by: insets), limitedToNumberOfLines: numberOfLines)
+        rect.origin.x    -= insets.left
+        rect.origin.y    -= insets.top
+        rect.size.width  += (insets.left + insets.right)
+        rect.size.height += (insets.top + insets.bottom)
+        return rect
     }
 }

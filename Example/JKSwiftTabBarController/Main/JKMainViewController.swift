@@ -46,8 +46,9 @@ class JKMainViewController: JKTabBarController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         super.tabBar(tabBar, didSelect: item)
-        
         guard let index = tabBar.items?.firstIndex(of: item) else { return }
+        if index == 1 {
+        }
         print("当前是：\(index)")
     }
     
@@ -76,7 +77,7 @@ extension JKMainViewController {
         let vc3 = ProfileViewController()
         vc3.view.backgroundColor = UIColor.yellow
         
-        viewControllers = [JKNavigationController(rootViewController: vc1), JKNavigationController(rootViewController: vc2), JKNavigationController(rootViewController: vc3)]
+        viewControllers = [vc1, vc2, vc3]
         
         let titleColor = UIColor(hexString: "#444444")!
         let selectedColor = UIColor(hexString: "#5F00B4")!

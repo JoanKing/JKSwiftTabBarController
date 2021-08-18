@@ -74,9 +74,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: tableView 的点击事件
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section)段,\(indexPath.row)行")
-        let profileViewController = ViewController()
-        profileViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+//        let profileViewController = ViewController()
+//        profileViewController.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(profileViewController, animated: true)
+       
+        self.navigationController?.pushViewController(TestViewController(), animated: true)
     }
     
     // MARK: tableView cell 的高度返回值

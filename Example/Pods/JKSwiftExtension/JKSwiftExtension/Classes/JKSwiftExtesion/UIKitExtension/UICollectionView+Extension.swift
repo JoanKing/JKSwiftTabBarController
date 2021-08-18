@@ -23,17 +23,17 @@ extension UICollectionView {
     @objc private func handleLongGestureMove(_ gesture: UILongPressGestureRecognizer) {
         switch(gesture.state) {
         // 开始移动
-        case UIGestureRecognizerState.began:
+        case UIGestureRecognizer.State.began:
             let point = gesture.location(in: gesture.view!)
             if let selectedIndexPath = self.indexPathForItem(at: point) {
                 // 开始移动
                 self.beginInteractiveMovementForItem(at: selectedIndexPath)
             }
-        case UIGestureRecognizerState.changed:
+        case UIGestureRecognizer.State.changed:
             // 移动中
             let point = gesture.location(in: gesture.view!)
             self.updateInteractiveMovementTargetPosition(point)
-        case UIGestureRecognizerState.ended:
+        case UIGestureRecognizer.State.ended:
             // 结束移动
             self.endInteractiveMovement()
         default:

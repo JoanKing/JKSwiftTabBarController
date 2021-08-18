@@ -190,6 +190,17 @@ extension JKTabBarView {
         item.badgeNumber = number
     }
     
+    // MARK: 设置提醒文字，位置
+    ///  设置提醒文字，位置
+    /// - Parameters:
+    ///   - number: 文字
+    ///   - index: 位置
+    func showBadgeText(_ number: String?, index: Int) {
+        if barButtonItems.count <= index { return }
+        let item = barButtonItems[index]
+        item.badgeText = number
+    }
+    
     // MARK: 设置小红点
     /// 设置小红点
     /// - Parameters:
@@ -328,4 +339,5 @@ fileprivate class JKTabBarGradientView: UIView {
         gradient.endPoint = direction.point().1
     }
 }
+
 

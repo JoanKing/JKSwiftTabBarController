@@ -105,6 +105,15 @@ open class JKTabBarController: UITabBarController {
         self.tabBarView.showBadgeNumber(number, index: index)
     }
     
+    // MARK: 设置提醒文字，位置 访问调 JK.rootViewController?
+    /// 设置提醒文字，位置 访问调 JK.rootViewController?
+    /// - Parameters:
+    ///   - number: 数字
+    ///   - index: 位置
+    open func showBadgeText(_ number: String?, index: Int) {
+        self.tabBarView.showBadgeText(number, index: index)
+    }
+    
     // MARK: 设置小红点
     /// 设置小红点
     /// - Parameters:
@@ -203,4 +212,5 @@ open class JKTabBarController: UITabBarController {
         UIViewController.attemptRotationToDeviceOrientation()
     }
 }
+
 
