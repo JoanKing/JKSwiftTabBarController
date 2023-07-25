@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
     
     lazy var tableView : UITableView = {
         let nav_height: CGFloat = UIScreen.main.bounds.height >= 812 ? 88 : 64
-        let tableView = UITableView(frame:CGRect(x: 0, y: 0, width: kScreenW, height: kScreenH - nav_height - kTabbarFrameH), style:.grouped)
+        let tableView = UITableView(frame:CGRect(x: 0, y: 0, width: jk_kScreenW, height: jk_kScreenH - nav_height - jk_kTabbarFrameH), style:.grouped)
         if #available(iOS 11, *) {
             tableView.estimatedSectionFooterHeight = 0
             tableView.estimatedSectionHeaderHeight = 0

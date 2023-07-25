@@ -21,6 +21,7 @@
 		849BB20F25E778F7006C6F35 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849BB20E25E778F7006C6F35 /* TestViewController.swift */; };
 		ADB2C3823DADE196F1D882C5 /* Pods_JKSwiftTabBarController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE47028B64E672943017558 /* Pods_JKSwiftTabBarController_Tests.framework */; };
 		E217D70DBCD3DA55ACB4839E /* Pods_JKSwiftTabBarController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F62F8200F4F7366DDB6CAB7 /* Pods_JKSwiftTabBarController_Example.framework */; };
+		E266532E27F6A952000F1BF5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E266532D27F6A952000F1BF5 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		A480E688D779198B9AEE5A1F /* Pods-JKSwiftTabBarController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Tests.debug.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Tests/Pods-JKSwiftTabBarController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD19C472543FFE82F1931BF5 /* Pods-JKSwiftTabBarController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSwiftTabBarController_Example.release.xcconfig"; path = "Target Support Files/Pods-JKSwiftTabBarController_Example/Pods-JKSwiftTabBarController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B0F2A564AD92C9874C5E2E7F /* JKSwiftTabBarController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JKSwiftTabBarController.podspec; path = ../JKSwiftTabBarController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E266532D27F6A952000F1BF5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F62DC4963323489EC48B4CEC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 				84978EFA25CFB459003AD86D /* ProfileViewController.swift */,
 				84978EF825CFB459003AD86D /* ViewController.swift */,
 				849BB20E25E778F7006C6F35 /* TestViewController.swift */,
+				E266532D27F6A952000F1BF5 /* BaseViewController.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -246,13 +249,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = SGVDL6B99N;
+						DevelopmentTeam = Q24HFFF5V3;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = SGVDL6B99N;
+						DevelopmentTeam = Q24HFFF5V3;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -353,7 +356,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/JKSwiftExtension/JKSwiftExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/JKSwiftTabBarController/JKSwiftTabBarController.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ZipArchive/ZipArchive.framework",
 			);
@@ -362,7 +364,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKSwiftExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKSwiftTabBarController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZipArchive.framework",
 			);
@@ -383,6 +384,7 @@
 				849BB20F25E778F7006C6F35 /* TestViewController.swift in Sources */,
 				84978EFC25CFB459003AD86D /* HomeViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				E266532E27F6A952000F1BF5 /* BaseViewController.swift in Sources */,
 				84978EF225CFB440003AD86D /* JKNavigationController.swift in Sources */,
 				84978EFB25CFB459003AD86D /* ViewController.swift in Sources */,
 				84978EF325CFB440003AD86D /* JKMainViewController.swift in Sources */,
@@ -533,12 +535,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SGVDL6B99N;
+				DEVELOPMENT_TEAM = Q24HFFF5V3;
 				INFOPLIST_FILE = JKSwiftTabBarController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.JKSwiftTabBarControlle;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.JKSwiftTabBarControlle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -554,12 +556,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SGVDL6B99N;
+				DEVELOPMENT_TEAM = Q24HFFF5V3;
 				INFOPLIST_FILE = JKSwiftTabBarController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.demo.JKSwiftTabBarControlle;
+				PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.JKSwiftTabBarControlle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -572,7 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A480E688D779198B9AEE5A1F /* Pods-JKSwiftTabBarController_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = SGVDL6B99N;
+				DEVELOPMENT_TEAM = Q24HFFF5V3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -595,7 +597,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AF7DA7C7993B56D59471394 /* Pods-JKSwiftTabBarController_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = XXHJUP7YMQ;
+				DEVELOPMENT_TEAM = Q24HFFF5V3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

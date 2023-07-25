@@ -60,6 +60,21 @@ class JKMainViewController: JKTabBarController {
     deinit{
         NotificationCenter.default.removeObserver(self)
     }
+    
+    override var shouldAutorotate: Bool {
+        let ret = self.selectedViewController?.shouldAutorotate ?? true
+        return ret
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        let ret = self.selectedViewController?.supportedInterfaceOrientations ?? .portrait
+        return ret
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+    
 }
 
 // MARK:- Tabbar的配置
@@ -68,13 +83,13 @@ extension JKMainViewController {
     // MARK: 本地TabBar的配置
     /// 本地TabBar的配置
     func localTabbar() {
-        let vc1 = HomeViewController()
+        let vc1 = JKNavigationController(rootViewController: HomeViewController())
         vc1.view.backgroundColor = UIColor.purple
         
-        let vc2 = TradeViewController()
+        let vc2 = JKNavigationController(rootViewController: TradeViewController())
         vc2.view.backgroundColor = UIColor.white
         
-        let vc3 = ProfileViewController()
+        let vc3 = JKNavigationController(rootViewController: ProfileViewController())
         vc3.view.backgroundColor = UIColor.yellow
         
         viewControllers = [vc1, vc2, vc3]

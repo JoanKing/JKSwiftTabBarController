@@ -35,7 +35,18 @@ class TestViewController: UIViewController {
         JK.mainViewController.setSelectedItem(at: 1)
     }
     
-
+    //是否自动旋转:需要横屏的视图控制器中覆写此方法，返回YES
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    //支持哪些屏幕方向:只支持竖屏
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        print("\(self.className)：支持横屏")             
+        return [.landscapeLeft, .portrait]
+    }
+    
+    
     /*
     // MARK: - Navigation
 

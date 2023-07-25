@@ -1,6 +1,6 @@
 {
   "name": "JKSwiftTabBarController",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "summary": "TabBarController的基本配置",
   "description": "这是TabBarController的一个详细的使用文档，支持下载后的更新，也支持文档的更新",
   "homepage": "https://github.com/JoanKing/JKSwiftTabBarController",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/JoanKing/JKSwiftTabBarController.git",
-    "tag": "0.0.7"
+    "tag": "0.1.0"
   },
   "platforms": {
     "ios": "8.0"
