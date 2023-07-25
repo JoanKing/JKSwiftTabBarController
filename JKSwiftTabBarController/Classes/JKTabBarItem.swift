@@ -62,6 +62,7 @@ public class JKTabBarItem: UIView {
             let status = selected ? UIControl.State.selected : UIControl.State.normal
             iconImageView.image = savebutton.image(for: status)
             bottomTitle.textColor = savebutton.titleColor(for: status)
+            bottomTitle.font = selected ? titleSelectedFont : titleFont
             if selected, !oldValue {
                 showAnimated()
             }
@@ -90,8 +91,12 @@ public class JKTabBarItem: UIView {
     public var title: String
     /// 默认的颜色
     private var titleNormalColor: UIColor
+    /// 底部字体的大小
+    private var titleFont: UIFont?
     /// 选中的的颜色
     private var titleSelectedColor: UIColor
+    /// 选中的的字体
+    private var titleSelectedFont: UIFont?
     /// 图片的大小
     private var imageItemSize: CGSize
     /// Tbabar的类型：默认单张图片
@@ -100,13 +105,15 @@ public class JKTabBarItem: UIView {
     private var animationDuration: TimeInterval = 0
     
     // MARK: 本地的Tbabar配置
-    private init(type: JKTabbarType, duration: TimeInterval, localImageCount: Int, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+    private init(type: JKTabbarType, duration: TimeInterval, localImageCount: Int, title: String, titleColor: UIColor, titleFont: UIFont? = UIFont.systemFont(ofSize: 10), selectedTitleColor: UIColor, titleSelectedFont: UIFont? = UIFont.systemFont(ofSize: 10), defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
         self.itemType = .local
         self.tabbarType = type
         self.imageName = defaultImageName
         self.title = title
         self.titleNormalColor = titleColor
+        self.titleFont = titleFont
         self.titleSelectedColor = selectedTitleColor
+        self.titleSelectedFont = titleSelectedFont
         self.animationDuration = duration
         self.imageItemSize = imageItemSize
         super.init(frame: CGRect.zero)
@@ -135,13 +142,15 @@ public class JKTabBarItem: UIView {
     }
     
     // MARK: 网络下载的Tbabar配置
-    private init(type: JKTabbarType, fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+    private init(type: JKTabbarType, fliePath: String, netWorkImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, titleFont: UIFont? = UIFont.systemFont(ofSize: 10), selectedTitleColor: UIColor, titleSelectedFont: UIFont? = UIFont.systemFont(ofSize: 10), defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
         self.sourceFliePath = fliePath
         self.itemType = .network
         self.imageName = defaultImageName
         self.title = title
+        self.titleFont = titleFont
         self.titleNormalColor = titleColor
         self.titleSelectedColor = selectedTitleColor
+        self.titleSelectedFont = titleSelectedFont
         self.animationDuration = duration
         self.imageItemSize = imageItemSize
         super.init(frame: CGRect.zero)
@@ -224,8 +233,8 @@ extension JKTabBarItem {
     ///   - titleColor: 未选中的字体颜色
     ///   - selectedTitleColor: 选中的字体颜色
     ///   - defaultImageName: 默认的额图片
-    public convenience init(localImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
-        self.init(type: .gifImage, duration: duration, localImageCount: localImageCount, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName : defaultImageName, imageItemSize: imageItemSize)
+    public convenience init(localImageCount: Int, duration: TimeInterval, title: String, titleColor: UIColor, titleFont: UIFont? = UIFont.systemFont(ofSize: 10), selectedTitleColor: UIColor, titleSelectedFont: UIFont? = UIFont.systemFont(ofSize: 10), defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+        self.init(type: .gifImage, duration: duration, localImageCount: localImageCount, title: title, titleColor: titleColor, titleFont: titleFont, selectedTitleColor: selectedTitleColor, titleSelectedFont: titleSelectedFont, defaultImageName : defaultImageName, imageItemSize: imageItemSize)
     }
     
     // MARK: 本地普通的Tabbar
@@ -235,8 +244,8 @@ extension JKTabBarItem {
     ///   - titleColor: 未选中的字体颜色
     ///   - selectedTitleColor: 选中的字体颜色
     ///   - defaultImageName: 默认的额图片
-    public convenience init(title: String, titleColor: UIColor, selectedTitleColor: UIColor, defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
-        self.init(type: .singleImage, duration: 0, localImageCount: 0, title: title, titleColor: titleColor, selectedTitleColor: selectedTitleColor, defaultImageName: defaultImageName, imageItemSize: imageItemSize)
+    public convenience init(title: String, titleColor: UIColor, titleFont: UIFont? = UIFont.systemFont(ofSize: 10), selectedTitleColor: UIColor, titleSelectedFont: UIFont? = UIFont.systemFont(ofSize: 10), defaultImageName: String, imageItemSize: CGSize = CGSize(width: 25, height: 25)) {
+        self.init(type: .singleImage, duration: 0, localImageCount: 0, title: title, titleColor: titleColor, titleFont: titleFont, selectedTitleColor: selectedTitleColor, titleSelectedFont: titleSelectedFont, defaultImageName: defaultImageName, imageItemSize: imageItemSize)
     }
 }
 
@@ -301,7 +310,7 @@ extension JKTabBarItem {
         animatedImageView.isHidden = true
 
         bottomTitle = UILabel()
-        bottomTitle.font = UIFont.systemFont(ofSize: 10)
+        bottomTitle.font = self.titleFont
         bottomTitle.textAlignment = .center
     }
 

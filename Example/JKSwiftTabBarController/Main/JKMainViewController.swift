@@ -96,12 +96,14 @@ extension JKMainViewController {
         
         let titleColor = UIColor(hexString: "#444444")!
         let selectedColor = UIColor(hexString: "#5F00B4")!
+        // 字体的大小
+        let titleFont = UIFont.jk.textR(11)
+        // 选中的字体的大小
+        let titleSelectedFont = UIFont.jk.textSB(11)
         // 测试读取本地图片
-        let tabBarItemOne = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "行情", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "fb_quotes")
-        // fb_trade
-        // let tabBarItemTwo = JKTabBarItem(title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_trade")
-        let tabBarItemTwo = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "交易", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "fb_trade")
-        let tabBarItemThree = JKTabBarItem(title: "我的", titleColor: titleColor, selectedTitleColor: selectedColor, defaultImageName: "tabbar_profile")
+        let tabBarItemOne = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "行情", titleColor: titleColor, titleFont: titleFont, selectedTitleColor: selectedColor, titleSelectedFont: titleSelectedFont, defaultImageName: "fb_quotes")
+        let tabBarItemTwo = JKTabBarItem(localImageCount: 6, duration: 0.5, title: "交易", titleColor: titleColor, titleFont: titleFont, selectedTitleColor: selectedColor, titleSelectedFont: titleSelectedFont, defaultImageName: "fb_trade")
+        let tabBarItemThree = JKTabBarItem(title: "我的", titleColor: titleColor, titleFont: titleFont, selectedTitleColor: selectedColor, titleSelectedFont: titleSelectedFont, defaultImageName: "tabbar_profile")
         
         tabBarView.barButtonItems = [tabBarItemOne, tabBarItemTwo, tabBarItemThree]
         tabBarView.tabBarItem = tabBarItemTwo
